@@ -1,17 +1,19 @@
 const router = require('express').Router()
+const TaskController = require('../controllers/Task.controller');
 
 const tasks = []
 
 // Obtener todas las tareas
-router.get('/', (req, res) => {
-    res.status(200).json({ result: tasks })
-})
+router.get(
+    '/',
+    TaskController.getTasks
+)
 
 // Agregar una tarea
-router.post('/', (req, res) => {
-    tasks.push(req.body);
-    res.status(201).json({ result: "task added 💯" })
-})
+router.post(
+    '/',
+    TaskController.setTask
+)
 
 // Actualizar una tarea
 router.put('/:id', (req, res) => {
